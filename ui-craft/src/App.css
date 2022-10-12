@@ -35,12 +35,11 @@ a {
 }
 
 button {
-  font-size: 40px;
+  font-size: 30px;
   margin-right: 30px;
   padding-inline: 20px;
   padding-bottom: 5px;
   color:olive;
-  border: none;
 }
 
 .search {
@@ -74,7 +73,7 @@ form {
   padding-inline: 80px;
   padding-top: 20px;
   padding-bottom: 100px;
-  width: 1400px;
+  width: 1200px;
   height: 500px;
   margin-top: 30px;
 }
@@ -103,4 +102,10 @@ table {
 .piece {
   padding-inline: 80px;
   padding-right: 200px;
+}
+
+.product{
+  height: 30px;
+  margin-top: 20px;
+
 }

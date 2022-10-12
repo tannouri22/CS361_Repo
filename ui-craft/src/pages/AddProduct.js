@@ -1,5 +1,5 @@
 import React from 'react'
-import Nav from './Nav'
+import Nav from './../components/Nav'
 import { BiSearch } from 'react-icons/bi';
 
 export default function AddProduct() {
@@ -13,11 +13,11 @@ export default function AddProduct() {
             <input class="search" type="text"></input>
             <button> <BiSearch /> </button>
         </div>
-        <label> Date: </label>
-        <input type="text"/>
+        <label class="product"> Date: </label>
+        <input type="text" class="product"/>
         <br></br>
-        <label> Cost </label>
-        <input type="text"/>
+        <label class="product"> Cost </label>
+        <input type="text" class="product"/>
     </form>
       
     </>
