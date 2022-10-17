@@ -36,9 +36,11 @@ export default function Stats() {
                 <label> past year </label> 
                 <input type="checkbox" />  
                 <br></br>
+                <button> Reset</button>
             </form>
         </div>
         <div class="workitem2 graphical">
+        <h2 class="title"> Statistics </h2>
             <h2> A graph will go here</h2>
             <div class="graph"><BsGraphUp/></div>
         </div>

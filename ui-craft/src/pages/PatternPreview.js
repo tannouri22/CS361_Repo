@@ -12,10 +12,10 @@ export default function PatternPreview() {
     <Nav />
 
     
-    <form>
-    
-        <h2> Add A Pattern </h2>
-        <button onClick={() => navigate(-1)}><BiArrowBack /></button>
+    <form class="add-template">
+    <button onClick={() => navigate(-1)}><BiArrowBack /></button>
+        <h2> Pattern Preview </h2>
+        
         <label class="product"> Image: </label>
         <br></br>
         <br></br>
@@ -26,7 +26,7 @@ export default function PatternPreview() {
         <input type="text" class="product"/>
         <br></br>
         <label class="product"> Price: </label>
-        <input type="text" class="product"/>
+        <input type="number" class="product"/>
         <br></br>
         <button class="product"> Open Pattern </button>
         <br></br>

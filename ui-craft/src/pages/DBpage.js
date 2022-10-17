@@ -1,8 +1,11 @@
 import React from 'react'
 import Nav from './../components/Nav'
 import { BiSearch } from 'react-icons/bi';
+import { useNavigate } from 'react-router-dom';
 
 export default function DBpage() {
+
+  const navigate = useNavigate();
   return (
     <>
       <Nav />
@@ -41,14 +44,14 @@ export default function DBpage() {
            
       
             <div class="pattern">    
-
+                <h1 class="title"> Database </h1>
                 <div class="searchbar">
                     <input class="search" type="text"></input>
                     <button id="searchicon"> <BiSearch /> </button>
                 </div>
 
                 <div class="card">
-                    <div class="name"> Pattern Name </div>
+                    <div class="name" onClick={() => navigate("/pattern-preview")}> Pattern Name </div>
                     <div class="name"> Pattern Name </div>
                     <div class="name"> Pattern Name </div>
                 

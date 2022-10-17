@@ -9,10 +9,10 @@ const navigate = useNavigate();
   return (
     <>
       <Nav />
-
+      
+      <div class="graphical wsborder">
+      <h1 class="title"> Workspace </h1>
       <div class="workspacebox">
-
-
         <div class="workitem1">
           <button class="new" onClick= {() => navigate('/add-pattern')}> + Create A New Pattern</button>
           <br></br>
@@ -34,6 +34,7 @@ const navigate = useNavigate();
         </div>
 
 
+      </div>
       </div>
     </>
       

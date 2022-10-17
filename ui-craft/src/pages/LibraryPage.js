@@ -38,7 +38,7 @@ export default function LibraryPage() {
           </form>
     
           <div class="pattern">    
-
+          <h1 class="title"> Library </h1>
               <div class="searchbar">
                   <input class="search" type="text"></input>
                   <button id="searchicon"> <BiSearch /> </button>

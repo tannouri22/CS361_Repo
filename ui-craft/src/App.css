@@ -140,10 +140,10 @@ form {
 }
 
 .workspacebox {
+  text-align: center;
   margin-right: 40px;
   margin-left: 40px;
-  border-style: dashed;
-  border-color: darkcyan;
+  
   justify-content: center;
   column-gap:70px;
   display:flex;
@@ -196,4 +196,13 @@ form {
 
 .filter-format {
   padding: 20px;
+}
+
+.title {
+  text-align: center;
+}
+
+.wsborder{
+ margin-left: 5%;
+ margin-right: 5%;
 }

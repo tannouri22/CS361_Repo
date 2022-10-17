@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 var connection  = require('express-myconnection'); 
 var mysql = require('mysql');
 
+
 const app = express(); 
 app.use(bodyParser.json());
 
@@ -15,12 +16,13 @@ app.use(
           port : 3306, 
         },'pool'));
 
-      app.post('/nothing',(req,res)=>{ });
+app.post('/nothing',(req,res)=>{ });
 
-      app.get('/sun', (req,res) => {
-          console.log("hi there!");
-      });
+app.get('/sun', (req,res) => {
+    console.log("hi there!");
+    var query = connection.request().query("SELECT * from Users");
+});
 
-      app.listen(3306, ()=> {
-      console.log(`app is running on port 3306`);
+app.listen(3306, ()=> {
+    console.log(`app is running on port 3306`);
 });
