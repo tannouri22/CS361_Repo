@@ -1,14 +1,24 @@
 import React from 'react'
 import Nav from './../components/Nav'
+import  {BiArrowBack } from "react-icons/bi"
+import { useHistory } from 'react-router-dom'
 
-export default function AddPattern() {
+export default function PatternPreview() {
+
+  const history = useHistory();
+
   return (
     <>
     <Nav />
 
-    <form class="add-template">
+    <button onClick={() => history.goBack()}><BiArrowBack /></button>
+    <form>
+  
         <h2> Add A Pattern </h2>
     
+        <label class="product"> Image: </label>
+        <br></br>
+        <br></br>
         <label class="product"> Pattern Name: </label>
         <input type="text" class="product"/>
         <br></br>
@@ -18,17 +28,11 @@ export default function AddPattern() {
         <label class="product"> Price: </label>
         <input type="text" class="product"/>
         <br></br>
-        <label class="product"> Attach PDF: </label>
-        <input type="checkbox" class="product"/>
+        <button class="product"> Open Pattern </button>
         <br></br>
-        <label class="product"> Upload Image: </label>
-        <input type="checkbox" class="product"/>
-        <br></br>
-        <br></br>
-        <button> Save Changes </button>
-        <button> Publish Pattern </button>
     </form>
     
+      
     </>
   )
 }

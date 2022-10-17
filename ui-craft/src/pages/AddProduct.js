@@ -7,11 +7,11 @@ export default function AddProduct() {
     <>
     <Nav />
 
-    <form>
+    <form class="add-template">
         <h2> Add A Product </h2>
         <div class="searchbar">
             <input class="search" type="text"></input>
-            <button> <BiSearch /> </button>
+            <button id="searchicon"> <BiSearch /> </button>
         </div>
         <label class="product"> Date: </label>
         <input type="text" class="product"/>

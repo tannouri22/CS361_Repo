@@ -1,6 +1,10 @@
 import React from 'react'
+import { useHistory } from 'react-router-dom';
 
 export default function LoginPage() {
+
+  const history = useHistory();
+
   return (
     <>
        <form class="login">
@@ -11,7 +15,7 @@ export default function LoginPage() {
             <input type="text"></input>
             <br></br>
             <br></br>
-            <input type="submit"></input>
+            <button onClick={() => history.push("/database") }>Start Crafting!</button>
        </form>
     </>
   )
