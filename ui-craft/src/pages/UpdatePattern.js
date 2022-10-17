@@ -4,6 +4,8 @@ import Nav from './../components/Nav'
 export default function UpdatePattern() {
   return (
     <>
+
+    <Nav />
       <form>
         <h2> Update A Pattern </h2>
     

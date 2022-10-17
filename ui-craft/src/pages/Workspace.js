@@ -1,10 +1,10 @@
 import React from 'react'
 import Nav from "./../components/Nav"
-import {useHistory} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom'
 
 export default function Workspace() {
 
-const history = useHistory();
+const navigate = useNavigate();
 
   return (
     <>
@@ -14,10 +14,10 @@ const history = useHistory();
 
 
         <div class="workitem1">
-          <button class="new" onClick= {() => history.push('/add-pattern')}> + Create A New Pattern</button>
+          <button class="new" onClick= {() => navigate('/add-pattern')}> + Create A New Pattern</button>
           <br></br>
           <br></br>
-          <button class="new" onClick = {() => history.push('/add-product')}> + Add A Product</button>
+          <button class="new" onClick = {() => navigate('/add-product')}> + Add A Product</button>
         </div>
 
 

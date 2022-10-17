@@ -1,10 +1,10 @@
 import React from 'react';
 import { BiWrench, BiData, BiLibrary, BiBrush, BiNetworkChart } from 'react-icons/bi';
-import {Link, useHistory} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 
 export default function Nav() {
 
-    const history = useHistory();
+    const navigate = useNavigate();
   return (
     <div class="navbox">
        
@@ -33,7 +33,7 @@ export default function Nav() {
         </div>
     
         <div class="page">
-            <button id="wrench" onClick={() => history.push("/")}> <BiWrench /> </button>
+            <button id="wrench" onClick={() => navigate("/")}> <BiWrench /> </button>
         </div>
 
     </div>

@@ -1,9 +1,9 @@
 import React from 'react'
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export default function LoginPage() {
 
-  const history = useHistory();
+  const navigate = useNavigate();
 
   return (
     <>
@@ -15,7 +15,7 @@ export default function LoginPage() {
             <input type="text"></input>
             <br></br>
             <br></br>
-            <button onClick={() => history.push("/database") }>Start Crafting!</button>
+            <button onClick={() => navigate("/database") }>Start Crafting!</button>
        </form>
     </>
   )

@@ -1,21 +1,21 @@
 import React from 'react'
 import Nav from './../components/Nav'
 import  {BiArrowBack } from "react-icons/bi"
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 export default function PatternPreview() {
 
-  const history = useHistory();
+  const navigate = useNavigate();
 
   return (
     <>
     <Nav />
 
-    <button onClick={() => history.goBack()}><BiArrowBack /></button>
-    <form>
-  
-        <h2> Add A Pattern </h2>
     
+    <form>
+    
+        <h2> Add A Pattern </h2>
+        <button onClick={() => navigate(-1)}><BiArrowBack /></button>
         <label class="product"> Image: </label>
         <br></br>
         <br></br>

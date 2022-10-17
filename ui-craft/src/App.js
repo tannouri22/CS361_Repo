@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import Stats from './pages/Stats'
 import LibraryPage from './pages/LibraryPage'
@@ -15,35 +15,25 @@ function App() {
 
   return (
     <>
-    <Router>
-          <Route path="/" exact>
-            <Login/>
-          </Route>
-          <Route path="/database">
-            <DBpage />
-          </Route>
-          <Route path="/library">
-            <LibraryPage />
-          </Route>
-          <Route path="/workspace">
-            <Workspace />
-          </Route>
-          <Route path="/stats">
-            <Stats />
-          </Route>
-          <Route path="/add-product">
-            <AddProduct />
-          </Route>
-          <Route path="/add-pattern">
-            <AddPattern />
-          </Route>
-          <Route path="/update-pattern">
-            <UpdatePattern />
-          </Route>
-          <Route path="/pattern-preview">
-            <PatternPreview />
-          </Route>
-    </Router>
+    <BrowserRouter>
+      <Routes>
+          <Route path="/" exact element={<Login/>}></Route>
+
+          <Route path="/database" element={<DBpage />}></Route>
+
+          <Route path="/library" element={<LibraryPage />}></Route>
+
+          <Route path="/workspace" element={<Workspace />}></Route>
+
+          <Route path="/stats" element={<Stats />}></Route>
+         
+          <Route path="/add-product" element={<AddProduct />}></Route>
+    
+          <Route path="/add-pattern" element={<AddPattern />}></Route>
+          <Route path="/update-pattern" element={<UpdatePattern />}></Route>
+          <Route path="/pattern-preview" element={<PatternPreview />}></Route>
+        </Routes>
+    </BrowserRouter>
     </>
   )
 }
