@@ -26,7 +26,7 @@ const navigate = useNavigate();
           <h2> Continue Working On: </h2>
 
           <div class="scrollbox">
-            <div class="wip"> Project 1 </div>
+            <div class="wip" onClick= {() => navigate('/add-pattern-wip')}> Project 1 </div>
             <div class="wip"> Project 2 </div>
             <div class="wip"> Project 3 </div>
           </div>

@@ -8,6 +8,7 @@ import Workspace from './pages/Workspace'
 import Login from './pages/Login'
 import AddProduct from './pages/AddProduct'
 import AddPattern from './pages/AddPattern'
+import AddPatternWip from './pages/AddPatternWip'
 import UpdatePattern from './pages/UpdatePattern'
 import PatternPreview from './pages/PatternPreview'
 
@@ -30,6 +31,7 @@ function App() {
           <Route path="/add-product" element={<AddProduct />}></Route>
     
           <Route path="/add-pattern" element={<AddPattern />}></Route>
+          <Route path="/add-pattern-wip" element={<AddPatternWip />}></Route>
           <Route path="/update-pattern" element={<UpdatePattern />}></Route>
           <Route path="/pattern-preview" element={<PatternPreview />}></Route>
         </Routes>

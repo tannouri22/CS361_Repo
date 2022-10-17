@@ -13,8 +13,10 @@ export default function PatternPreview() {
 
     
     <form class="add-template">
-    <button onClick={() => navigate(-1)}><BiArrowBack /></button>
-        <h2> Pattern Preview </h2>
+        <h2>
+        <button onClick={() => navigate("/database")}><BiArrowBack /></button>
+        &nbsp; &nbsp; Pattern Preview 
+        </h2>
         
         <label class="product"> Image: </label>
         <br></br>
