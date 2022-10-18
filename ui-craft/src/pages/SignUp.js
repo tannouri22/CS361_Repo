@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
 
-export default function LoginPage() {
+export default function SignUp() {
 
   const navigate = useNavigate();
 
@@ -15,7 +15,7 @@ export default function LoginPage() {
             <input type="text"></input>
             <br></br>
             <br></br>
-            <button class="loginbutton" onClick={() => navigate("/database") }>Start Crafting!</button>
+            <button class="loginbutton" onClick={() => navigate("/login") }>Create Account</button>
        </form>
     </>
   )
