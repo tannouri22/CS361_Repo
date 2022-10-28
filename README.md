@@ -8,17 +8,17 @@ We will be using PyZMQ for messaging between services. This means that a TCP con
 
  #the json packages will be necessary for the transport of the data type used in the microservice &nbsp;
 
-`import zmq`                   &nbsp; 
+    `import zmq`                   
 
-`import json`                  &nbsp;
+    `import json`                 
 
-`from json import JSONEncoder` &nbsp;
+    `from json import JSONEncoder`
 
-`context = zmq.Context()`    &nbsp;    
+    `context = zmq.Context()`      
 
-`socket = context.socket(zmq.REQ)` &nbsp;
+    `socket = context.socket(zmq.REQ)` 
 
-`socket.connect('tcp://localhost:2984')` &nbsp;
+    `socket.connect('tcp://localhost:2984')` 
 
 
 `class NumpyArrayEncoder(JSONEncoder):` &nbsp;
@@ -38,28 +38,28 @@ a standard array, as an intermediary step.
 
 **How to REQUEST data** &nbsp; 
 
-`#the numpy arrays must be converted to an array and wrapped in json` &nbsp;
+    `#the numpy arrays must be converted to an array and wrapped in json`
 
-`#otherwise the zmq will error` &nbsp;
+    `#otherwise the zmq will error`
 
-`#furthermore, you must anticipate a message from the microservice that the array has been received` &nbsp;
+    `#furthermore, you must anticipate a message from the microservice that the array has been received`
 
 
-`socket.send_string(json.dumps(numpyarray, cls=NumpyArrayEncoder))` &nbsp;        
-`verification_message = socket.recv()` &nbsp;
+    `socket.send_string(json.dumps(numpyarray, cls=NumpyArrayEncoder))`     
+    `verification_message = socket.recv()`
 
 **How to RECEIVE data** &nbsp;
 
-`#similar to above, you will receive a JSON object, and will need to decode it back to a numpy array` &nbsp;
+    `#similar to above, you will receive a JSON object, and will need to decode it back to a numpy array` 
 
-`#it is crucial to send a verification message that the array has been received` &nbsp;
+    `#it is crucial to send a verification message that the array has been received` 
 
 
-`finalimage_json = json.loads(socket.recv())` &nbsp;
+    `finalimage_json = json.loads(socket.recv())` 
 
-`secondimage = asarray(finalimage_json)` &nbsp;
+    `secondimage = asarray(finalimage_json)`
 
-`socket.send(b"thank you for the final image!")` &nbsp;
+    `socket.send(b"thank you for the final image!")` 
 
 **UML Sequence Diagram**
 
