@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="./app.css">
+    <title>Adding A Product</title>
+    <script language="JavaScript"></script>
+</head>
+
+<body>
+    <div class="navbox">
+       
+        <div>
+            <a href="/home.hbs" class= "logo"> Craftics </a>
+        </div>
+
+        <div class="page">
+            <BiBrush />
+            <a href="/workspace.hbs">  Workspace </a>
+        </div>
+    
+        <div class="page">
+            <BiData /> 
+            <a href="/database.hbs">  Database </a>
+        </div>
+    
+        <div class="page">
+            <BiLibrary />
+            <a href="/library.hbs">  Library </a>
+        </div>
+    
+        <div class="page">
+            <a href="/"> Logout</a>
+        </div>
+
+    </div>
+
+    <form class="add-template" action="product-form" method="POST">
+            
+            <a style="margin-right: 1250px" href="/workspace.hbs"> <-- Go Back </a>
+            &nbsp; &nbsp;
+            <h2>
+            Add A Product 
+            </h2>
+            <div class="searchbar">
+                <input class="search" type="text"></input>
+                <button> Find Pattern </button>
+            </div>
+            <label class="product"> Start Date: </label>
+            <input type="date" class="product" name="start-date"/>
+            <br></br>
+            <label class="product"> End Date: </label>
+            <input type="date" class="product" name="end-date"/>
+            <br></br>
+            <label class="product"> Cost </label>
+            <input type="number" step="0.01" class="product" name="cost"/>
+            <br></br>
+            <button type="submit"> Save </button>
+    </form>
+</body>
+</html>

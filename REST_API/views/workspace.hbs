@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="./app.css">
+<title>Login</title>
+<script language="JavaScript"></script>
+</head>
+
+<body>
+   <div class="navbox">
+        <div>
+            <a href="/home.hbs" class= "logo"> Craftics </a>
+        </div>
+        <div class="page">
+            <BiBrush />
+            <a href="/workspace.hbs">  Workspace </a>
+        </div>
+        <div class="page">
+            <BiData /> 
+            <a href="/database.hbs">  Database </a>
+        </div>
+        <div class="page">
+            <BiLibrary />
+            <a href="/library.hbs">  Library </a>
+        </div>
+        <div class="page">
+            <a href="/"> <BiWrench /> Logout</a>
+        </div>
+    </div>
+
+    <div class="graphical wsborder">
+      <h1 class="title"> Workspace </h1>
+      <div class="workspacebox">
+          <div class="workitem1">
+            <a class="new" href="/add-pattern.hbs"> + Create A New Pattern</a>
+            <br></br>
+            <br></br>
+            <a class="new" href="/add-product.hbs"> + Add A Product</a>
+          </div>
+
+          <div class="workitem2">
+                <h2> Continue Working On: </h2>
+                <div class="scrollbox">
+                  <div class="wip"> Project 1 </div>
+                  <div class="wip"> Project 2 </div>
+                  <div class="wip"> Project 3 </div>
+                </div>
+          </div>
+      </div>
+    </div>
+</body>
+</html>

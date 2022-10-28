@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="app.css">
+<title>Login</title>
+<script language="JavaScript">
+    let clicked = 'false';
+    document.addEventListener('DOMContentLoaded', function(){
+        document.getElementById("tester").style.display = "none";
+        if (document.getElementById("tester").innerHTML = "false") {
+            alert("Invalid login, please try again!");
+        }
+      
+    });
+</script>
+</head>
+
+<body>
+    
+     <form method="POST" class="login" id="verify-user" action="/verify-user">
+     <div id="messagetag">
+     </div>
+            <h1 class= "logo"> Craftics </h1>
+            <h3> Username: </h3>
+            <input type="text" name="username"></input>
+            <h3> Password: </h3>
+            <input type="text" name="password"></input>
+            <br></br>
+            <button class="loginbutton" id="logbut" type="submit">Start Crafting!</button>
+            {{#each data}}
+            <p id="tester">{{this.value}}</p>
+            {{/each}}
+       </form>
+    
+</body>
+</html>

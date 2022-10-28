@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="./app.css">
+    <title>Adding A Pattern</title>
+    <script language="JavaScript"></script>
+</head>
+
+<body>
+    <div class="navbox">
+       
+         <div>
+            <a href="/home.hbs" class= "logo"> Craftics </a>
+        </div>
+
+        <div class="page">
+            <BiBrush />
+            <a href="/workspace.hbs">  Workspace </a>
+        </div>
+    
+        <div class="page">
+            <BiData /> 
+            <a href="/database.hbs">  Database </a>
+        </div>
+    
+        <div class="page">
+            <BiLibrary />
+            <a href="/library.hbs">  Library </a>
+        </div>
+    
+        <div class="page">
+            <a href="/"> Logout</a>
+        </div>
+
+    </div>
+
+    <form class="add-template" action="/pattern-form" method="POST">
+       
+        <a style="margin-right: 1250px" href="/workspace.hbs"> <-- Go Back </a>
+        &nbsp; &nbsp;
+        <h2>
+        Add A Pattern 
+        </h2>
+        <label class="product"> Pattern Name: </label>
+        <input type="text" class="product" name="pattern-name"/>
+        <br></br>
+        <label class="product"> Description: </label>
+        <input type="text" class="product" name="description"/>
+        <br></br>
+        <label class="product"> Price: </label>
+        <input type="number" class="product" name="price"/>
+        <br></br>
+        <label class="product"> Attach PDF: </label>
+        <input type="file" class="product" name="pattern-file"/>
+        <br></br>
+        <label class="product"> Upload Image: </label>
+        <input type="file" class="product" name="image"/>
+        <br></br>
+        <br></br>
+        <button type="submit"> Save Changes </button>
+        <button type="submit"> Publish Pattern </button>
+    </form>
+</body>
+</html>

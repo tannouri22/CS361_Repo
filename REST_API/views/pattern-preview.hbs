@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="./app.css">
+    <title>Pattern Preview</title>
+    <script language="JavaScript"></script>
+</head>
+
+<body>
+    <div class="navbox">
+       
+        <div>
+            <a href="/home.hbs" class= "logo"> Craftics </a>
+        </div>
+
+        <div class="page">
+            <BiBrush />
+            <a href="/workspace.hbs">  Workspace </a>
+        </div>
+    
+        <div class="page">
+            <BiData /> 
+            <a href="/database.hbs">  Database </a>
+        </div>
+    
+        <div class="page">
+            <BiLibrary />
+            <a href="/library.hbs">  Library </a>
+        </div>
+    
+        <div class="page">
+            <a href="/"> <BiWrench /> Logout</a>
+        </div>
+
+    </div>
+
+    <form class="add-template">
+        <h2>
+        <button onClick={() => navigate("/database")}><BiArrowBack /></button>
+        &nbsp; &nbsp; Pattern Preview 
+        </h2>
+        
+        <label class="product"> Image: </label>
+        <br></br>
+        <br></br>
+        <label class="product"> Pattern Name: </label>
+        <input type="text" class="product"/>
+        <br></br>
+        <label class="product"> Description: </label>
+        <input type="text" class="product"/>
+        <br></br>
+        <label class="product"> Price: </label>
+        <input type="number" class="product"/>
+        <br></br>
+        <button class="product"> Open Pattern </button>
+        <br></br>
+    </form>
+
+</body>
+</html>

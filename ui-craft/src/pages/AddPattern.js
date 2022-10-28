@@ -10,7 +10,6 @@ export default function AddPattern() {
     <Nav />
 
     <form class="add-template">
-    
         <h2>
         <button onClick={() => navigate("/workspace")}> <BiArrowBack /></button>
         &nbsp; &nbsp;

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="./app.css">
+    <title>Database</title>
+    <script language="JavaScript"></script>
+</head>
+
+<body>
+
+    <div class="navbox">
+       
+        <div>
+            <a href="/home.hbs" class= "logo"> Craftics </a>
+        </div>
+
+        <div class="page">
+            <BiBrush />
+            <a href="/workspace.hbs">  Workspace </a>
+        </div>
+    
+        <div class="page">
+            <BiData /> 
+            <a href="/database.hbs">  Database </a>
+        </div>
+    
+        <div class="page">
+            <BiLibrary />
+            <a href="/library.hbs">  Library </a>
+        </div>
+    
+        <div class="page">
+            <a href="/"> <BiWrench /> Logout</a>
+        </div>
+
+    </div>
+
+    <div class="dbbox">
+            <form action="/database-filter" method="POST">
+              <div classname="filter-format">
+                <h2> Filters: </h2>
+                <h3> Craft </h3>
+                <label> crochet </label>
+                <input type="radio" />
+                <br></br>
+                <label> knitting </label>
+                <input type="radio" />
+                <br></br>
+                <label> cross-stitch </label>
+                <input type="radio" /> 
+
+                <br></br>
+
+                <h3> Price </h3>
+                <label> free </label>
+                <input type="checkbox" /> 
+                <br></br>
+                <label> $1 - 5 </label>
+                <input type="checkbox" /> 
+                <br></br>
+                <label> $ 5 - 10 </label> 
+                <input type="checkbox" />  
+                <br></br>
+                <label> &gt; $ 10 </label>
+                <input type="checkbox" />  
+              </div>
+
+              <button type="submit"> Search </button>
+            </form>
+           
+      
+            <div class="pattern">    
+                <h1 class="title"> Database </h1>
+                <div class="searchbar">
+                    <input class="search" type="text"></input>
+                    <button> Search </button>
+                </div>
+
+                <div class="card">
+                    {{#each data}}
+                    <div class="name">
+                        {{this.name}}
+                    </div>
+                    {{/each}}
+                    
+                </div>
+            </div> 
+    </div>  
+</body>
+</html>

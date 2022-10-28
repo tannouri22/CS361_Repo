@@ -11,7 +11,6 @@ export default function DBpage() {
       <Nav />
 
     <div class="dbbox">
-
             <form>
               <div classname="filter-format">
                 <h2> Filters: </h2>

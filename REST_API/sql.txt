@@ -1,0 +1,43 @@
+A list of SQL calls that will eventually be made
+
+
+Login:
+//Adding a login credential
+INSERT INTO `User`(`password`, `email`) VALUES ('[value-1]','[value-2]');
+
+//Checking a login credential
+SELECT 'email', 'password' FROM User;           //also get their userId value for later queries?
+
+Library: (Read Patterns based on Search Filters)
+//querying all patterns
+SELECT * FROM `Library` WHERE `idUser` = '[userId]';
+
+//further nesting with filter statements
+SELECT * FROM `Intersection_Pattern_Tag` INNER JOIN `Pattern` ON Intersection_Pattern_Tag.Pattern_idPattern = Pattern.idPattern INNER JOIN `Library` ON Pattern.idPattern = Library.Pattern_idPattern WHERE Intersection_Pattern_Tag.Tag_tagName = '[tagName]';
+
+Database: (Read Patterns based on Search Filters)
+//Querying all the patterns
+SELECT * FROM `Pattern` WHERE isPublished = true;
+
+//querying based on filter term(s) **can change based on the number of filters**
+SELECT * FROM `Intersection_Pattern_Tag` INNER JOIN `Pattern` ON Intersection_Pattern_Tag.Pattern_idPattern = Pattern.idPattern WHERE Intersection_Pattern_Tag.Tag_tagName = '[tagName]';
+
+Pattern: (Create Pattern & Tag, Delete Pattern & Tag, Update Pattern)
+
+//add a tag to a pattern
+INSERT INTO `Intersection_Pattern_Tag`(`Pattern_idPattern`, `Tag_tagName`) VALUES ('[value-1]','[value-2]');
+
+//adding a pattern
+INSERT INTO `Pattern`(`idPattern`, `name`, `description`, `price`, `image_path`, `instructions`, `isPublished`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]','[value-6]','[value-7]')
+*****must add the pattern to the individual's library and assign them as the author*****
+INSERT INTO `Library`(`User_idUser`, `Pattern_idPattern`, `isAuthor`) VALUES ('[value-1]','[value-2]','true');
+
+//deleting a pattern
+DELETE FROM `Pattern` WHERE `idPattern` = `[idPattern]`;
+
+//deleting a tag
+DELETE FROM `Intersection_Pattern_Tag` WHERE `Tag_tagName` = `[tagName]`;
+
+Workspace: 
+//patterns that will show up on this page
+SELECT * FROM `Library` WHERE isAuthor = '[userId]';
