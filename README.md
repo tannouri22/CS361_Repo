@@ -8,28 +8,28 @@ We will be using PyZMQ for messaging between services. This means that a TCP con
 
  #the json packages will be necessary for the transport of the data type used in the microservice &nbsp;
 
-    `import zmq`                   
+    `import zmq               
 
-    `import json`                 
+    import json            
 
-    `from json import JSONEncoder`
+    from json import JSONEncoder
 
-    `context = zmq.Context()`      
+    context = zmq.Context() 
 
-    `socket = context.socket(zmq.REQ)` 
+    socket = context.socket(zmq.REQ)
 
-    `socket.connect('tcp://localhost:2984')` 
+    socket.connect('tcp://localhost:2984')` 
 
 
-`class NumpyArrayEncoder(JSONEncoder):` &nbsp;
+`class NumpyArrayEncoder(JSONEncoder):  
 
-    `def default(self, obj):`
+    def default(self, obj):
 
-        `if isinstance(obj, np.ndarray):` 
+        if isinstance(obj, np.ndarray):
 
-            `return obj.tolist()` 
+            return obj.tolist()
 
-        `return JSONEncoder.default(self, obj)` 
+        return JSONEncoder.default(self, obj)` 
 
 Due to the microservice accepting images through its socket, we will need to take vital steps in ensuring that we
 are able to convert the image to an array (numpyarray). Only then can this array be converted to JSON, which is 
@@ -38,28 +38,28 @@ a standard array, as an intermediary step.
 
 **How to REQUEST data** &nbsp; 
 
-    `#the numpy arrays must be converted to an array and wrapped in json`
+    `#the numpy arrays must be converted to an array and wrapped in json
 
-    `#otherwise the zmq will error`
+    #otherwise the zmq will error
 
-    `#furthermore, you must anticipate a message from the microservice that the array has been received`
+    #furthermore, you must anticipate a message from the microservice that the array has been received
 
 
-    `socket.send_string(json.dumps(numpyarray, cls=NumpyArrayEncoder))`     
-    `verification_message = socket.recv()`
+    socket.send_string(json.dumps(numpyarray, cls=NumpyArrayEncoder))     
+    verification_message = socket.recv()`
 
 **How to RECEIVE data** &nbsp;
 
-    `#similar to above, you will receive a JSON object, and will need to decode it back to a numpy array` 
+    `#similar to above, you will receive a JSON object, and will need to decode it back to a numpy array
 
-    `#it is crucial to send a verification message that the array has been received` 
+    #it is crucial to send a verification message that the array has been received
 
 
-    `finalimage_json = json.loads(socket.recv())` 
+    finalimage_json = json.loads(socket.recv())
 
-    `secondimage = asarray(finalimage_json)`
+    secondimage = asarray(finalimage_json)
 
-    `socket.send(b"thank you for the final image!")` 
+    socket.send(b"thank you for the final image!")`
 
 **UML Sequence Diagram**
 
