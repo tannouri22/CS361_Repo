@@ -38,6 +38,11 @@ app.get('/home.hbs', function(req,res)
   res.render('home')
 });
 
+app.get('/pattern-preview.hbs', function(req,res)
+{
+  res.render('pattern-preview')
+})
+
 app.get('/database.hbs', function(req,res)
   {
     let query1 =`SELECT * FROM Pattern WHERE isPublished = true;`;

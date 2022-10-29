@@ -3,7 +3,13 @@
 <head>
     <link rel="stylesheet" href="./app.css">
     <title>Pattern Preview</title>
-    <script language="JavaScript"></script>
+    <script language="JavaScript">
+        function addToLibrary(){
+            //change the text of the button
+            //route handler to add to library or remove from library
+        }
+
+    </script>
 </head>
 
 <body>
@@ -35,11 +41,14 @@
     </div>
 
     <form class="add-template">
+
+         <a style="margin-right: 1250px" href="/database.hbs"> <-- Go Back </a>
+        &nbsp; &nbsp;
         <h2>
-        <button onClick={() => navigate("/database")}><BiArrowBack /></button>
-        &nbsp; &nbsp; Pattern Preview 
+        Pattern Preview 
         </h2>
-        
+        <button onclick="addToLibrary()"> Add to Library </button>
+        <br></br>
         <label class="product"> Image: </label>
         <br></br>
         <br></br>
@@ -52,8 +61,8 @@
         <label class="product"> Price: </label>
         <input type="number" class="product"/>
         <br></br>
-        <button class="product"> Open Pattern </button>
-        <br></br>
+        <a href="/add-product.hbs"> Add a Product </a> <!-- pass the pattern id to the product page -->
+        <button> Open Pattern </button> <!-- route handler or js to open pdf in another tab -->
     </form>
 
 </body>
