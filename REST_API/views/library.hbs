@@ -73,16 +73,12 @@
               </div>
 
               <div class="card">
-                  <div class="name"> <a href="/pattern-preview.hbs"> Pattern Name </a></div>
-                  <div class="name"> Pattern Name </div>
-                  <div class="name"> Pattern Name </div>
-              
-                  <div class="name"> Pattern Name </div>
-                  <div class="name"> Pattern Name </div>
-                  <div class="name"> Pattern Name </div>
-              
-                  <div class="name"> Pattern Name </div>
-                  <div class="name"> Pattern Name </div>
+                    {{#each data}}
+                    <div class="name">
+                        {{this.idPattern}}
+                        {{this.name}} 
+                    </div>
+                    {{/each}}
               </div>
           </div> 
   </div>  

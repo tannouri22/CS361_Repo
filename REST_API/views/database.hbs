@@ -73,7 +73,7 @@
                 <h1 class="title"> Database </h1>
                 <div class="searchbar">
                     <input class="search" type="text"></input>
-                    <button> Search </button>
+                    <a href="" id="search"> Search </a>
                 </div>
 
 
@@ -81,10 +81,13 @@
                 <div class="card">
                     {{#each data}}
                     <div class="name">
-                        {{this.name}}
+                        <form action="/pattern-preview.hbs" method="POST">
+                         <input style="display:none" name="idOfPattern" value={{this.idPattern}}/>
+                         {{this.name}} 
+                         <button type="submit"> preview </button>
+                        </form>
                     </div>
                     {{/each}}
-                    
                 </div>
             </div> 
     </div>  

@@ -38,9 +38,19 @@ app.get('/home.hbs', function(req,res)
   res.render('home')
 });
 
-app.get('/pattern-preview.hbs', function(req,res)
+app.post('/pattern-preview.hbs', function(req,res)
 {
-  res.render('pattern-preview')
+  let data = req.body;
+  let id = parseInt(req.body.idOfPattern);
+  let query1 =`SELECT * FROM Pattern WHERE idPattern = ${id};`;
+      db.pool.query(query1, function(error, rows, fields){
+          if(error){
+              console.log(error);
+              res.sendStatus(400);
+          } else {
+              res.render('pattern-preview', {data: rows});
+          }
+      })
 })
 
 app.get('/database.hbs', function(req,res)
@@ -58,22 +68,28 @@ app.get('/database.hbs', function(req,res)
 
 app.get('/library.hbs', function(req,res)
   {
-    res.render('library');
-    /*let query1 =`SELECT * FROM Library WHERE idUser = ${userId};`;
+    let query1 =`SELECT Pattern.name FROM Pattern INNER JOIN Library ON Pattern.idPattern = Library.Pattern_idPattern WHERE Library.User_idUser = ${userId};`;
       db.pool.query(query1, function(error, rows, fields){
           if(error){
               console.log(error);
-              res.sendStatus(400);
           } else {
               res.render('library', {data: rows});
           }
-      })*/
+      })
 });
 
 app.get('/workspace.hbs', function(req,res){
   //query the patterns in Library where isAuthor is true
   let query1 = `SELECT Pattern.name FROM Pattern INNER JOIN Library ON Pattern.idPattern = Library.Pattern_idPattern WHERE Library.isAuthor = "true";`
-  res.render('workspace')
+  db.pool.query(query1, function(error, rows, fields){
+    if(error){
+        console.log(error);
+        res.sendStatus(400);
+    } else {
+      res.render('workspace', {data: rows});
+    }
+})
+  
 });
 
 app.get('/add-pattern.hbs', function(req,res){
@@ -82,6 +98,10 @@ app.get('/add-pattern.hbs', function(req,res){
 
 app.get('/add-product.hbs', function(req,res){
   res.render('add-product')
+});
+
+app.get('/update-pattern.hbs', function(req,res){
+  res.render('update-pattern')
 });
 
 app.post('/verify-user', function(req, res){
@@ -164,15 +184,46 @@ app.post('/product-form', function(req, res){
 
 //delete a pattern
 app.post('/delete-pattern', function(req,res){
+  let data = req.body;
+  let primaryKey = parseInt(data.primaryKey);
+  console.log(`Here is your id = '${primaryKey}'`);
+  let query1 = `DELETE FROM Pattern WHERE idPattern = ${primaryKey}`;
 
-  //take me to the workspace page afterwards
-})
+        db.pool.query(query1, function(error, rows, fields){
+            if (error) {
+              console.log(error);
+              res.sendStatus(400);
+            } else {
+              res.redirect('/workspace.hbs');
+            }
+})});
 
 //update a pattern
+app.post('/update-pattern', function(req,res){
+  let data = req.body;
+  let primaryKey = parseInt(data.updatePrice);
+  
+
+  queryUpdate = `UPDATE Intersection_Beds_People SET endDate = '${data.updateEndDate}' WHERE Intersection_Beds_People.primaryKey = '${primaryKey}'`;
+
+        db.pool.query(queryUpdate, function(error, rows, fields){
+            if (error) {
+              console.log(error);
+              res.sendStatus(400);
+            } else {
+              res.redirect('/workspace.hbs');
+           }
+})});
 
 //include functionality to delete and update a product? 
+//view a product?
+
+
+
+
 
 //save a pattern into your library - pattern preview page
+
 
 //form filter for database
 app.post("/database-filter", (req, res) =>
@@ -181,7 +232,6 @@ app.post("/database-filter", (req, res) =>
 })
 
 //form filter for library
-
 
 
 app.listen(port, () => {

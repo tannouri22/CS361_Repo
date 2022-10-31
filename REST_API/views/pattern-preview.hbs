@@ -49,21 +49,24 @@
         </h2>
         <button onclick="addToLibrary()"> Add to Library </button>
         <br></br>
+        {{#each data}}
         <label class="product"> Image: </label>
         <br></br>
         <br></br>
         <label class="product"> Pattern Name: </label>
-        <input type="text" class="product"/>
+        <p>{{this.name}}</p>
         <br></br>
         <label class="product"> Description: </label>
-        <input type="text" class="product"/>
+        <p>{{this.description}}</p>
         <br></br>
         <label class="product"> Price: </label>
-        <input type="number" class="product"/>
+        <p>{{this.price}}</p>
         <br></br>
-        <a href="/add-product.hbs"> Add a Product </a> <!-- pass the pattern id to the product page -->
-        <button> Open Pattern </button> <!-- route handler or js to open pdf in another tab -->
+        {{/each}}
     </form>
+
+     <a href="/add-product.hbs"> Add a Product </a> <!-- pass the pattern id to the product page -->
+        <button> Open Pattern </button> <!-- route handler or js to open pdf in another tab -->
 
 </body>
 </html>

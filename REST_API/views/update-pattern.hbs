@@ -8,7 +8,6 @@
 
 <body>
     <div class="navbox">
-       
         <div>
             <a href="/home.hbs" class= "logo"> Craftics </a>
         </div>
@@ -25,32 +24,44 @@
     
         <div class="page">
             <BiLibrary />
-            <a href="/">  Library </a>
+            <a href="/library.hbs">  Library </a>
         </div>
     
         <div class="page">
-            <a href="/start.hbs"> <BiWrench /> Logout</a>
+            <a href="/"> Logout</a>
         </div>
-
     </div>
 
-     <form>
-        <h2> Update A Pattern </h2>
-    
+     <form class="add-template" action="/update-pattern" method="POST">
+
+     <a style="margin-right: 1050px" href="/workspace.hbs"> <-- Go Back </a>
+        &nbsp; &nbsp;
+        <h2> 
+        Update A Pattern 
+        </h2>
+       {{#each data}}
+        <label class="product"> Image: </label>
+        <br></br>
+        <br></br>
         <label class="product"> Pattern Name: </label>
-        <input type="text" class="product"/>
+        <input type="text" class="product" value="{{this.name}}"/>
         <br></br>
         <label class="product"> Description: </label>
-        <input type="text" class="product"/>
+        <input type="text" class="product" value="{{this.description}}"/>
         <br></br>
         <label class="product"> Price: </label>
-        <input type="text" class="product"/>
+        <input type="number" class="product" value="{{this.price}}"/>
         <br></br>
+        {{/each}}
         <label class="product"> Attach PDF: </label>
-        <input type="checkbox" class="product"/>
+        <input type="file" class="product" name="pattern-file"/>
         <br></br>
         <label class="product"> Upload Image: </label>
-        <input type="checkbox" class="product"/>
+        <input type="file" class="product" name="image"/>
+        <br></br>
+        <br></br>
+        <button onclick="deletePattern()"> delete Pattern </button>
     </form>
+    
 </body>
 </html>
