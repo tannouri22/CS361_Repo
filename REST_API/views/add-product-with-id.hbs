@@ -41,9 +41,10 @@
             <h2>
             Add A Product 
             </h2>
-            <input class="search" name="idOfPattern" type="text"/>
-            <button> Find Pattern </button>
-            <br>
+            {{#each data}}
+            <h4> # {{this.idPattern}} - {{this.name}} </h4>
+             <input style="display:none" name="idOfPattern" value={{this.idPattern}}/>
+            {{/each}}
             <label class="product"> Start Date: </label>
             <input type="date" class="product" name="start-date"/>
             <br></br>

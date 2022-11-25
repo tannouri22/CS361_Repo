@@ -10,5 +10,15 @@ var pool = mysql.createPool({
     database        : 'cs361_tannoura'
 })
 
+exports.asyncQuery = (query) => {
+    return new Promise((resolve, reject) => {
+        pool.query(query, function (err, rows) {
+            if (err) {
+                return reject(err);
+            }
+            resolve(rows);
+        });
+    });
+};
 // Export it for use in our applicaiton
 module.exports.pool = pool;

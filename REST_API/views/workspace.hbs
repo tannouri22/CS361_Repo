@@ -3,7 +3,17 @@
 <head>
     <link rel="stylesheet" href="./app.css">
 <title>Login</title>
-<script language="JavaScript"></script>
+<script language="JavaScript">
+
+     document.addEventListener('DOMContentLoaded', function(){
+        document.getElementById("addingProduct").addEventListener('click', ()=>{
+            event.preventDefault();
+            alert("Make sure you know the name of your pattern!");
+            window.location.href = "/add-product.hbs";            
+        })
+    });
+
+</script>
 </head>
 
 <body>
@@ -28,28 +38,38 @@
         </div>
     </div>
 
-    <div class="graphical wsborder">
-      <h1 class="title"> Workspace </h1>
+    <div id="workborder" class="f">
+
+        <h1 style="text-align:center"> Workspace </h1>
+        
+    <div class="dbbox">
       <div class="workspacebox">
           <div class="workitem1">
-            <a class="new" href="/add-pattern.hbs"> + Create A New Pattern</a>
+            <a class="new" href="/add-pattern.hbs"> + Create A Pattern</a>
             <br></br>
             <br></br>
-            <a class="new" href="/add-product.hbs"> + Add A Product</a>
+            <a class="new" id="addingProduct" href="/add-product.hbs"> + Add A Product</a>
           </div>
 
           <div class="workitem2">
-                <h2> Continue Working On: </h2>
+                <h3> Continue Working On: </h3>
                 <div class="scrollbox">
                     {{#each data}}
-                  <div class="wip">
-                    {{this.idPattern}}
-                    {{this.name}}
+                  <div class="card">
+                         <form action="/update-pattern" method="POST">
+                         <input style="display:none" name="idPattern" value={{this.idPattern}}/>
+                         <img src="{{this.image_path}}" id="db_image">
+                         <br>
+                         {{this.name}} 
+                         <br>
+                         <button class="pbutton" type="submit"> preview </button>
+                        </form>
                   </div>
                     {{/each}}
                 </div>
           </div>
       </div>
+    </div>
     </div>
 </body>
 </html>

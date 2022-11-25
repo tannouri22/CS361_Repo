@@ -17,19 +17,20 @@
 
 <body>
     
-     <form method="POST" class="login" id="verify-user" action="/verify-user">
-     <div id="messagetag">
-     </div>
+     <form method="POST" class="center" id="verify-user" action="/verify-user">
+     <div id="messagetag"></div>
+     <div class="login">
             <h1 class= "logo"> Craftics </h1>
             <h3> Username: </h3>
             <input type="text" name="username"></input>
             <h3> Password: </h3>
             <input type="text" name="password"></input>
             <br></br>
-            <button class="loginbutton" id="logbut" type="submit">Start Crafting!</button>
+            <button  type="submit">Start Crafting!</button>
             {{#each data}}
             <p id="tester">{{this.value}}</p>
             {{/each}}
+    </div>
        </form>
     
 </body>

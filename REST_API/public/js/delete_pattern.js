@@ -1,6 +1,6 @@
-function deletePattern(primaryKey) {
+function deletePattern(idPattern) {
          let data = {
-            primaryKey: primaryKey
+            idPattern: idPattern
          };
     
          var xhttp = new XMLHttpRequest();

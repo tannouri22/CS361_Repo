@@ -4,10 +4,25 @@
     <link rel="stylesheet" href="./app.css">
     <title>Pattern Preview</title>
     <script language="JavaScript">
-        function addToLibrary(){
-            //change the text of the button
-            //route handler to add to library or remove from library
-        }
+
+         document.addEventListener('DOMContentLoaded', function(){
+            document.getElementById("tester").style.display = "none";
+            if (document.getElementById("tester").innerHTML == "true"){
+                let button = document.createElement("button");
+                button.type = "submit";
+                button.innerText = "Saved";
+                document.getElementById("save-form").appendChild(button);
+                document.getElementById("save-form").action = "/remove-from-library";
+                //change the form action to "REmove from libraRY"
+            } 
+            if (document.getElementById("tester").innerHTML == "false") {
+                let button = document.createElement("button");
+                button.type = "submit";
+                button.innerText = "Save to Library";
+                document.getElementById("save-form").appendChild(button);
+                document.getElementById("save-form").action = "/save-to-library";
+            }
+    });
 
     </script>
 </head>
@@ -15,43 +30,48 @@
 <body>
     <div class="navbox">
        
-        <div>
+         <div>
             <a href="/home.hbs" class= "logo"> Craftics </a>
         </div>
 
         <div class="page">
-            <BiBrush />
-            <a href="/workspace.hbs">  Workspace </a>
+           <a href="/workspace.hbs">  Workspace </a>
         </div>
     
         <div class="page">
-            <BiData /> 
             <a href="/database.hbs">  Database </a>
         </div>
     
         <div class="page">
-            <BiLibrary />
             <a href="/library.hbs">  Library </a>
         </div>
     
         <div class="page">
-            <a href="/"> <BiWrench /> Logout</a>
+            <a href="/"> Logout </a>
         </div>
 
     </div>
 
-    <form class="add-template">
-
-         <a style="margin-right: 1250px" href="/database.hbs"> <-- Go Back </a>
+<div class="formula">
+     <a style="margin-right: 1250px" href="/database.hbs"> <-- Go Back </a>
         &nbsp; &nbsp;
+    <form action="/add-product-from-preview" method="POST">
+        {{#each data}}
+     <input style="display:none" name="idOfPattern" value={{this.idPattern}}/>
+        {{/each}}
+        <button type="submit"> Add a Product </button>
+    </form>
+</div>
+
+    <form id="save-form" class="pattern-preview"  method="POST">
         <h2>
         Pattern Preview 
         </h2>
-        <button onclick="addToLibrary()"> Add to Library </button>
         <br></br>
         {{#each data}}
         <label class="product"> Image: </label>
-        <br></br>
+        <br><br>
+        <img id="display_image" src="{{this.image_path}}">
         <br></br>
         <label class="product"> Pattern Name: </label>
         <p>{{this.name}}</p>
@@ -62,11 +82,16 @@
         <label class="product"> Price: </label>
         <p>{{this.price}}</p>
         <br></br>
+        <label class="product"> PDF: </label>
+        <br>
+        <a href="{{this.instructions}}" target="_blank">*click to download*</a>
+        <input style="display:none" name="idOfPattern" value={{this.idPattern}}/>
+        {{/each}}
+        <br> <br>
+        {{#each saved}}
+         <p id="tester">{{this.value}}</p>
         {{/each}}
     </form>
-
-     <a href="/add-product.hbs"> Add a Product </a> <!-- pass the pattern id to the product page -->
-        <button> Open Pattern </button> <!-- route handler or js to open pdf in another tab -->
 
 </body>
 </html>

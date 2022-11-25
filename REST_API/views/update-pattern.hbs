@@ -3,7 +3,35 @@
 <head>
     <link rel="stylesheet" href="./app.css">
     <title>Updating A Pattern</title>
-    <script language="JavaScript"></script>
+    <script language="JavaScript">
+
+         document.addEventListener("DOMContentLoaded", () => {
+
+            //such that price has two decimal places to represent money
+            //document.getElementById("price").addEventListener("onchange", (event) => {
+              //  this.value = parseFloat(this.value).toFixed(2)
+            //});
+
+            //change form action based on button clicked
+            document.getElementById("publish_button").addEventListener("click", (event)=>{
+                document.getElementById("form").action = "/publish-pattern-in-updating";
+                document.getElementById("form").submit();
+            })
+
+             document.getElementById("save_changes").addEventListener("click", (event)=>{
+                document.getElementById("form").action = "/update-form";
+                document.getElementById("form").submit();
+            })
+
+            document.getElementById("delete_button").addEventListener("click", (event)=>{
+                event.preventDefault();
+                document.getElementById("form").action = "/workspace.hbs";
+                document.getElementById("form").method = "GET";
+                document.getElementById("form").submit();
+            })
+        })   
+    </script>
+    <script src="./js/delete_pattern.js"></script>
 </head>
 
 <body>
@@ -32,36 +60,41 @@
         </div>
     </div>
 
-     <form class="add-template" action="/update-pattern" method="POST">
-
+     <form id="form" enctype="multipart/form-data" class="pattern-preview" method="POST">
      <a style="margin-right: 1050px" href="/workspace.hbs"> <-- Go Back </a>
         &nbsp; &nbsp;
         <h2> 
         Update A Pattern 
         </h2>
        {{#each data}}
-        <label class="product"> Image: </label>
-        <br></br>
+        <input name="idPattern" style="display:none" value="{{this.idPattern}}">
+         <img id="display_image" src="{{this.image_path}}">
         <br></br>
         <label class="product"> Pattern Name: </label>
-        <input type="text" class="product" value="{{this.name}}"/>
+        <input type="text" name="pattern-name"class="product" value="{{this.name}}"/>
         <br></br>
         <label class="product"> Description: </label>
-        <input type="text" class="product" value="{{this.description}}"/>
+        <input type="text" name="description" class="product" value="{{this.description}}"/>
         <br></br>
         <label class="product"> Price: </label>
-        <input type="number" class="product" value="{{this.price}}"/>
+        <input type="number" name="price" class="product" value="{{this.price}}"/>
         <br></br>
-        {{/each}}
+       
         <label class="product"> Attach PDF: </label>
-        <input type="file" class="product" name="pattern-file"/>
+        <a href="{{this.instructions}}" target="_blank">*current saved pdf*</a>
+        <input name="file_name" style="display:none" value="{{this.file_name}}">
+        <br>
+        <input type="file" name="file" class="product" name="pattern-file"/>
         <br></br>
         <label class="product"> Upload Image: </label>
-        <input type="file" class="product" name="image"/>
+        <input type="file" name="image" class="product" name="image"/>
+        <input name="image_name" style="display:none" value="{{this.image_name}}">
         <br></br>
         <br></br>
-        <button onclick="deletePattern()"> delete Pattern </button>
-    </form>
-    
+        <button id="publish_button"> publish pattern </button>
+        <button id="save_changes"> save changes </button>
+        <button id="delete_button" onclick="deletePattern({{this.idPattern}})"> delete Pattern </button>
+        </form>
+     {{/each}}
 </body>
 </html>

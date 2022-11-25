@@ -35,52 +35,88 @@
 
     </div>
 
-     <div class="dbbox">
+   <div class="dbbox">
+            <form action="/library-filter" class="f formula" method="POST">
+              <div classname="filter-format">
+               
+                <h2> Filters: </h2>
+                <p style="font-size: 15px"> PLEASE NOTE THAT SEARCHES WILL RETURN ALL PATTERNS THAT MATCH AT LEAST ONE TAG/TERM</p>
+                <h3> Search Term</h3>
+                <input class="search" name="searchbar" type="text"></input>
+                <br>
 
-          <form classname="filter">
-              <h2> Filters: </h2>
-              <h3> Craft </h3>
-              <label> crochet </label>
-              <input type="radio" />
-              <br></br>
-              <label> knitting </label>
-              <input type="radio" />
-              <br></br>
-              <label> cross-stitch </label>
-              <input type="radio" /> 
+                <h3> Craft </h3>
+                <label> crochet </label>
+                <input type="checkbox" name="crafttag1" value="crochet" />
+                <br></br>
+                <label> knitting </label>
+                <input type="checkbox" name="crafttag2" value="knitting" />
+                <br></br>
+                <label> cross-stitch </label>
+                <input type="checkbox" name="crafttag3" value="cross-stitch" /> 
 
-              <br></br>
+                <br></br>
 
-              <h3> Price </h3>
-              <label> free </label>
-              <input type="checkbox" /> 
-              <br></br>
-              <label> $1 - 5 </label>
-              <input type="checkbox" /> 
-              <br></br>
-              <label> $ 5 - 10 </label> 
-              <input type="checkbox" />  
-              <br></br>
-              <label> &gt; $ 10 </label>
-              <input type="checkbox" />  
-          </form>
-    
-          <div class="pattern">    
-          <h1 class="title"> Library </h1>
-              <div class="searchbar">
-                  <input class="search" type="text"></input>
-                  <button> Search </button>
+                <h3> Item </h3>
+                <label> headwear </label>
+                <input type="checkbox" name="crafttag4" value="headwear" />
+                <br></br>
+                <label> tops </label>
+                <input type="checkbox" name="crafttag5" value="tops" />
+                <br></br>
+                <label> bottoms </label>
+                <input type="checkbox" name="crafttag6" value="bottoms" /> 
+                <br></br>
+                <label> socks </label>
+                <input type="checkbox" name="crafttag7" value="socks" />
+                <br></br>
+                <label> slippers </label>
+                <input type="checkbox" name="crafttag8" value="slippers" />
+                <br></br>
+                <label> plushies </label>
+                <input type="checkbox" name="crafttag9" value="plushies" /> 
+
+                <br></br>
+
+                <h3> Price </h3>
+                <label> free </label>
+                <input type="radio" name="pricetag" value="0"/> 
+                <br></br>
+                <label> $1 - 5 </label>
+                <input type="radio" name="pricetag" value="1"/> 
+                <br></br>
+                <label> $5 - 10 </label> 
+                <input type="radio" name="pricetag" value="5"/>  
+                <br></br>
+                <label> &gt; $ 10 </label>
+                <input type="radio" name="pricetag" value="10"/> 
+                <br><br> 
+                <button type="submit"> Search </button>
               </div>
+            </form>
 
-              <div class="card">
+
+            <div class="pattern f">    
+                <h1> Library </h1>
+               
+           
+            <!-- pass the pattern id to the pattern preview page -->
+                <div class="card">
                     {{#each data}}
-                    <div class="name">
-                        {{this.idPattern}}
-                        {{this.name}} 
-                    </div>
+                   
+                        <form action="/preview-or-update" method="POST">
+                         <input style="display:none" name="idOfPattern" value={{this.idPattern}}/>
+                         <img src="{{this.image_path}}" id="db_image">
+                         <br>
+                         {{this.name}} 
+                         <br>
+                         <button class="pbutton" type="submit"> preview </button>
+                        </form>
+                 
                     {{/each}}
-              </div>
-          </div> 
-  </div>  
+                </div>
+
+            </div> 
+    </div>  
 </body>
 </html>

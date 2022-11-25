@@ -3,7 +3,27 @@
 <head>
     <link rel="stylesheet" href="./app.css">
     <title>Adding A Pattern</title>
-    <script language="JavaScript"></script>
+    <script language="JavaScript">            
+        document.addEventListener("DOMContentLoaded", () => {
+
+            //such that price has two decimal places to represent money
+            document.getElementById("price").addEventListener("onchange", (event) => {
+                this.value = parseFloat(this.value).toFixed(2)
+            });
+
+            //change form action based on button clicked
+            document.getElementById("publish_button").addEventListener("click", (event)=>{
+                document.getElementById("form").action = "/publish-pattern-in-adding";
+                document.getElementById("form").submit();
+            })
+
+             document.getElementById("save-changes").addEventListener("click", (event)=>{
+                document.getElementById("form").action = "/pattern-form";
+                document.getElementById("form").submit();
+            })
+        })   
+
+    </script>
 </head>
 
 <body>
@@ -34,31 +54,75 @@
 
     </div>
 
-    <form class="add-template" action="/pattern-form" method="POST">
-       
-        <a style="margin-right: 1250px" href="/workspace.hbs"> <-- Go Back </a>
+    <a style="margin-left: 100px" href="/workspace.hbs"> <-- Go Back </a>
+ 
+    <form id="form" class="pattern2" enctype="multipart/form-data" method="POST">
         &nbsp; &nbsp;
-        <h2>
-        Add A Pattern 
-        </h2>
-        <label class="product"> Pattern Name: </label>
-        <input type="text" class="product" name="pattern-name"/>
-        <br></br>
-        <label class="product"> Description: </label>
-        <input type="text" class="product" name="description"/>
-        <br></br>
-        <label class="product"> Price: </label>
-        <input type="number" class="product" name="price"/>
-        <br></br>
-        <label class="product"> Attach PDF: </label>
-        <input type="file" class="product" name="pattern-file"/>
-        <br></br>
-        <label class="product"> Upload Image: </label>
-        <input type="file" class="product" name="image"/>
-        <br></br>
-        <br></br>
-        <button type="submit"> Save Changes </button>
-        <button type="submit"> Publish Pattern </button>
+        <h2> Add A Pattern </h2>
+        <div class="dbbox2">
+            <div class="formula2">
+                <label class="product"> Pattern Name: </label>
+                <input type="text" class="product" name="pattern-name"/>
+                <br></br>
+                <label class="product"> Description: </label>
+                <input type="text" class="product" name="description"/>
+                <br></br>
+                <label class="product"> Price: </label>
+                <input id="price" type="number" class="product" step="0.01" name="price"/>
+            </div>
+            <div class="formula2">
+                <label class="product"> Attach PDF: </label>
+                <input type="file" class="product" name="pattern-file"/>
+                <br></br>
+                <label class="product"> Upload Image: </label>
+                <input type="file" class="product" name="image_input" accept=".jpg" />
+                <br></br>
+            </div>
+        </div>
+        
+        <h4> Add Tags for Searches </h4>
+        <div class="dbbox2">
+            <div class="filter-format">
+                <h3> Craft </h3>
+                <label> crochet </label>
+                <input type="checkbox" name="crafttag1" value="crochet" />
+                <br></br>
+                <label> knitting </label>
+                <input type="checkbox" name="crafttag2" value="knitting" />
+                <br></br>
+                <label> cross-stitch </label>
+                <input type="checkbox" name="crafttag3" value="cross-stitch" /> 
+                <br></br>
+            </div>
+            <div class="filter-format">
+                <h3> Item </h3>
+                <label> headwear </label>
+                <input type="checkbox" name="crafttag4" value="headwear" />
+                <br></br>
+                <label> tops </label>
+                <input type="checkbox" name="crafttag5" value="tops" />
+                <br></br>
+                <label> bottoms </label>
+                <input type="checkbox" name="crafttag6" value="bottoms" /> 
+                <br></br>
+                <label> socks </label>
+                <input type="checkbox" name="crafttag7" value="socks" />
+                <br></br>
+                <label> slippers </label>
+                <input type="checkbox" name="crafttag8" value="slippers" />
+                <br></br>
+                <label> plushies </label>
+                <input type="checkbox" name="crafttag9" value="plushies" /> 
+                <br></br>
+            </div>
+            <!--<div class="filter-format"></div>-->
+        </div>
+
+        <br><br>
+        <button id="publish_button"> Publish Pattern </button>     
+        <button id="save-changes"> Save Changes </button>
     </form>
+    
+
 </body>
 </html>
